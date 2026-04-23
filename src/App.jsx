@@ -207,9 +207,10 @@ export default function App() {
   const fetchSongs = useCallback(async (q = "") => {
     setLoading(true);
     try {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://song-api-ognj.onrender.com" : "");
       const url = q
-        ? `/manalese/songs/search/${encodeURIComponent(q)}`
-        : "/manalese/songs";
+        ? `${baseUrl}/manalese/songs/search/${encodeURIComponent(q)}`
+        : `${baseUrl}/manalese/songs`;
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
