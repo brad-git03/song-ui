@@ -208,8 +208,8 @@ export default function App() {
     setLoading(true);
     try {
       const url = q
-        ? `/api/manalese/songs/search/${encodeURIComponent(q)}`
-        : "/api/manalese/songs";
+        ? `/manalese/songs/search/${encodeURIComponent(q)}`
+        : "/manalese/songs";
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
